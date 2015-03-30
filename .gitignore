@@ -1,2 +1,8 @@
 /pg_filedump.o
 /pg_filedump
+/Debug
+/Release
+/x64
+*.opensdf
+*.sdf
+*.suo

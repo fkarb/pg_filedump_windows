@@ -22,6 +22,7 @@
  * Original Author: Patrick Macdonald <patrickm@redhat.com>
  */
 
+#define WIN32
 #include "pg_filedump.h"
 
 #include "utils/pg_crc_tables.h"
@@ -32,6 +33,12 @@
 
 #include "storage/checksum.h"
 #include "storage/checksum_impl.h"
+
+#undef printf
+#undef fopen
+#undef sprintf
+#include <stdio.h>
+
 
 /***
  * Global variables for ease of use mostly
@@ -437,7 +444,7 @@ GetBlockSize()
 	unsigned int pageHeaderSize = sizeof(PageHeaderData);
 	unsigned int localSize = 0;
 	int			bytesRead = 0;
-	char		localCache[pageHeaderSize];
+	char		localCache[sizeof(PageHeaderData)];
 
 	/* Read the first header off of block 0 to determine the block size */
 	bytesRead = fread(&localCache, 1, pageHeaderSize, fp);
