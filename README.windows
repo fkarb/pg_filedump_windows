@@ -1,0 +1,3 @@
+This repo includes changes to make pg_filedump compile on Windows. Depending
+on your PostgreSQL installation, you may need to change the "Additional
+Include Directories" paths under "C/C++" in the pg_filedump project.
